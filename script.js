@@ -44,51 +44,50 @@ let dirtCounter = 0;
 
 // Movements
 for (let i = 0; i < movements.length; i++) {
+  // create dirt found index
   let dirtFoundIndex;
 
+  // switch cases for various movements
+  // if the hoover is already at the wall, don't move. If not, move by incrementing current position
   switch (movements[i]) {
     case "N":
-      if (currentPositionY == dimensions[1]) {
-        console.log("dont move N" + i);
-      } else {
+      if (currentPositionY !== dimensions[1]) {
         currentPositionY++;
       }
       break;
     case "S":
-      if (currentPositionY == 0) {
-        console.log("dont move S" + i);
-      } else {
+      if (currentPositionY !== 0) {
         currentPositionY--;
       }
       break;
     case "W":
-      if (currentPositionX == 0) {
-        console.log("dont move W" + i);
-      } else {
+      if (currentPositionX !== 0) {
         currentPositionX--;
       }
       break;
     case "E":
-      if (currentPositionX == dimensions[0]) {
-        console.log("dont move E" + i);
-      } else {
+      if (currentPositionX !== dimensions[0]) {
         currentPositionX++;
       }
       break;
   }
+  // assign dirt index (it is -1 if not found)
   dirtFoundIndex = findSubArr(
     [currentPositionX.toString(), currentPositionY.toString()],
     dirtLocations
   );
+  // if dirt patch is found, increment counter and delete dirt patch from array to prevent double counting
   if (dirtFoundIndex !== -1) {
     dirtCounter++;
     dirtLocations.splice(dirtFoundIndex, 1);
   }
 }
 
+// output answer
 console.log(currentPositionX + " " + currentPositionY);
 console.log(dirtCounter.toString());
 
+// Function that checks an array for a sub array in the context of this problem (assuming sub array has lenght of 2)
 function findSubArr(subArr, arr) {
   let check = -1;
   for (let i = 0; i < arr.length; i++) {
