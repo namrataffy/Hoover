@@ -38,11 +38,14 @@ for (let i = 0; i < dimensions[1]; i++) {
 // Position set up
 let currentPositionX = parseInt(originalPosition[0]);
 let currentPositionY = parseInt(originalPosition[1]);
-console.log(currentPositionX);
-console.log(currentPositionY);
+
+// Dirt counter set up
+let dirtCounter = 0;
 
 // Movements
 for (let i = 0; i < movements.length; i++) {
+  let dirtFoundIndex;
+
   switch (movements[i]) {
     case "N":
       if (currentPositionY == dimensions[1]) {
@@ -73,6 +76,26 @@ for (let i = 0; i < movements.length; i++) {
       }
       break;
   }
+  dirtFoundIndex = findSubArr(
+    [currentPositionX.toString(), currentPositionY.toString()],
+    dirtLocations
+  );
+  if (dirtFoundIndex !== -1) {
+    dirtCounter++;
+    dirtLocations.splice(dirtFoundIndex, 1);
+  }
 }
+
 console.log(currentPositionX);
 console.log(currentPositionY);
+console.log(dirtCounter);
+
+function findSubArr(subArr, arr) {
+  let check = -1;
+  for (let i = 0; i < arr.length; i++) {
+    if (subArr[0] == arr[i][0] && subArr[1] == arr[i][1]) {
+      check = i;
+    }
+  }
+  return check;
+}
