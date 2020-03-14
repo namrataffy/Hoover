@@ -86,9 +86,8 @@ for (let i = 0; i < movements.length; i++) {
   }
 }
 
-console.log(currentPositionX);
-console.log(currentPositionY);
-console.log(dirtCounter);
+console.log(currentPositionX + " " + currentPositionY);
+console.log(dirtCounter.toString());
 
 function findSubArr(subArr, arr) {
   let check = -1;
