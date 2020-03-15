@@ -9,8 +9,14 @@ test2();
 // test for large rectangle and initial dirt patch NOT on 0,0
 test3();
 
-// test for starting position outside of rectangle, should fail
+// test for starting position outside of rectangle
 test4();
+
+// test for standard set of inputs
+test5();
+
+// test for moving only into a wall
+test6();
 
 function test1() {
   let finalCoordinates;
@@ -82,7 +88,7 @@ function test3() {
   }
 
   // check if pass
-  if (finalCoordinates == "100 2" && numberOfDirtCleaned == "1") {
+  if (finalCoordinates == "99 2" && numberOfDirtCleaned == "1") {
     console.log("passed test 3");
   } else {
     console.log("failed test 3");
@@ -106,9 +112,67 @@ function test4() {
   }
 
   // check if pass
-  if (finalCoordinates == "100 2" && numberOfDirtCleaned == "1") {
+  if (answers == null) {
     console.log("passed test 4");
   } else {
     console.log("failed test 4");
+  }
+}
+
+function test5() {
+  let finalCoordinates;
+  let numberOfDirtCleaned;
+
+  let dimensions = ["10", "10"];
+  let originalPosition = ["5", "5"];
+  let movements = ["N", "S", "E", "W", "S", "W"];
+  let dirtLocations = [
+    ["5", "5"],
+    ["4", "5"],
+    ["4", "4"],
+    ["1", "3"]
+  ];
+
+  // run Hoover movement function, declare answers
+  answers = Hoover(dimensions, originalPosition, movements, dirtLocations);
+  if (answers) {
+    finalCoordinates = answers[0];
+    numberOfDirtCleaned = answers[1];
+  }
+
+  // check if pass
+  if (finalCoordinates == "4 4" && numberOfDirtCleaned == "2") {
+    console.log("passed test 5");
+  } else {
+    console.log("failed test 5");
+  }
+}
+
+function test6() {
+  let finalCoordinates;
+  let numberOfDirtCleaned;
+
+  let dimensions = ["5", "5"];
+  let originalPosition = ["5", "5"];
+  let movements = ["N", "E", "E", "N"];
+  let dirtLocations = [
+    ["5", "5"],
+    ["4", "5"],
+    ["4", "4"],
+    ["1", "3"]
+  ];
+
+  // run Hoover movement function, declare answers
+  answers = Hoover(dimensions, originalPosition, movements, dirtLocations);
+  if (answers) {
+    finalCoordinates = answers[0];
+    numberOfDirtCleaned = answers[1];
+  }
+
+  // check if pass
+  if (finalCoordinates == "5 5" && numberOfDirtCleaned == "1") {
+    console.log("passed test 6");
+  } else {
+    console.log("failed test 6");
   }
 }

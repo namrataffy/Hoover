@@ -29,6 +29,7 @@ if (answers) {
   console.log(finalCoordinates);
   console.log(numberOfDirtCleaned);
 } else {
+  // this is the case where no answers were return, meaning there was an error in the inputs
   console.log(
     "Invalid inputs, check to make sure initial position of Hoover is inside the defined room dimensions"
   );

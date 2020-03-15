@@ -1,7 +1,7 @@
 // Main function to run the Hoover
 function Hoover(dimensions, originalPosition, movements, dirtLocations) {
   // check if inputs are valid
-  // if the initial coordinate are outside the dimensions of room, stop
+  // if the initial hoover coordinates are outside the dimensions of room, stop
   if (parseInt(dimensions[0]) < parseInt(originalPosition[0])) {
     return;
   }
@@ -33,22 +33,22 @@ function Hoover(dimensions, originalPosition, movements, dirtLocations) {
     // if the hoover is already at the wall, don't move. If not, move by incrementing current position
     switch (movements[i]) {
       case "N":
-        if (currentPositionY !== dimensions[1]) {
+        if (currentPositionY.toString() !== dimensions[1]) {
           currentPositionY++;
         }
         break;
       case "S":
-        if (currentPositionY !== 0) {
+        if (currentPositionY.toString() !== 0) {
           currentPositionY--;
         }
         break;
       case "W":
-        if (currentPositionX !== 0) {
+        if (currentPositionX.toString() !== 0) {
           currentPositionX--;
         }
         break;
       case "E":
-        if (currentPositionX !== dimensions[0]) {
+        if (currentPositionX.toString() !== dimensions[0]) {
           currentPositionX++;
         }
         break;
