@@ -21,13 +21,26 @@ Input:
 NNESEESWNWW
 ```
 
-</br>
+- First line is the room dimensions (X,Y)
+- Second line is the Hoover initial position (X,Y)
+- Subsequent lines contain the various positions of dirt patches
+- Last line contains movement instructions
+  </br>
+
 Output:
 
 ```
 1 3
 1
 ```
+
+- First line is the Hoover final position (X,Y)
+- Second line is the number of dirt patches cleaned by the Hoover
+  </br>
+
+# Instructions
+
+To use, either delete/create or alter the "input.txt" file to the specifications of your choosing and run 'node script.js' from the command line
 
 # Technologies
 
@@ -64,9 +77,5 @@ if (dirtFoundIndex !== -1) {
 dirtCounter++;
 dirtLocations.splice(dirtFoundIndex, 1);
 }
-
-```
-
-```
 
 ```
