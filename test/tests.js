@@ -18,6 +18,7 @@ test5();
 // test for moving only into a wall
 test6();
 
+// --------------------------------------------------------------------------------------------------------------
 function test1() {
   let finalCoordinates;
   let numberOfDirtCleaned;
@@ -47,6 +48,7 @@ function test1() {
   }
 }
 
+// --------------------------------------------------------------------------------------------------------------
 function test2() {
   let finalCoordinates;
   let numberOfDirtCleaned;
@@ -71,6 +73,7 @@ function test2() {
   }
 }
 
+// --------------------------------------------------------------------------------------------------------------
 function test3() {
   let finalCoordinates;
   let numberOfDirtCleaned;
@@ -95,6 +98,7 @@ function test3() {
   }
 }
 
+// --------------------------------------------------------------------------------------------------------------
 function test4() {
   let finalCoordinates;
   let numberOfDirtCleaned;
@@ -119,6 +123,7 @@ function test4() {
   }
 }
 
+// --------------------------------------------------------------------------------------------------------------
 function test5() {
   let finalCoordinates;
   let numberOfDirtCleaned;
@@ -148,6 +153,7 @@ function test5() {
   }
 }
 
+// --------------------------------------------------------------------------------------------------------------
 function test6() {
   let finalCoordinates;
   let numberOfDirtCleaned;

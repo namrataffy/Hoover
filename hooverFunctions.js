@@ -1,3 +1,4 @@
+// --------------------------------------------------------------------------------------------------------------
 // Main function to run the Hoover
 function Hoover(dimensions, originalPosition, movements, dirtLocations) {
   // check if inputs are valid
@@ -72,6 +73,7 @@ function Hoover(dimensions, originalPosition, movements, dirtLocations) {
   return [finalCoordinates, numberOfDirtCleaned];
 }
 
+// --------------------------------------------------------------------------------------------------------------
 // Function that checks an array for a sub array in the context of this problem (assuming sub array has lenght of 2)
 function findSubArr(subArr, arr) {
   let check = -1;
@@ -83,5 +85,6 @@ function findSubArr(subArr, arr) {
   return check;
 }
 
+// --------------------------------------------------------------------------------------------------------------
 exports.Hoover = Hoover;
 exports.findSubArr = findSubArr;
