@@ -1,5 +1,14 @@
 // Main function to run the Hoover
 function Hoover(dimensions, originalPosition, movements, dirtLocations) {
+  // check if inputs are valid
+  // if the initial coordinate are outside the dimensions of room, stop
+  if (parseInt(dimensions[0]) < parseInt(originalPosition[0])) {
+    return;
+  }
+  if (parseInt(dimensions[1]) < parseInt(originalPosition[1])) {
+    return;
+  }
+
   // Current position set up
   let currentPositionX = parseInt(originalPosition[0]);
   let currentPositionY = parseInt(originalPosition[1]);
@@ -8,7 +17,7 @@ function Hoover(dimensions, originalPosition, movements, dirtLocations) {
   let dirtCounter = 0;
 
   // If there is dirt on starting position, count it
-  let dirtFoundIndex = findSubArr(["0", "0"], dirtLocations);
+  let dirtFoundIndex = findSubArr(originalPosition, dirtLocations);
   // if dirt patch is found, increment counter and delete dirt patch from array to prevent double counting
   if (dirtFoundIndex !== -1) {
     dirtCounter++;

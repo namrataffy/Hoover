@@ -23,8 +23,8 @@ NNESEESWNWW
 
 - First line is the room dimensions (X,Y)
 - Second line is the Hoover initial position (X,Y)
-- Subsequent lines contain the various positions of dirt patches
-- Last line contains movement instructions
+- Subsequent lines contain the various positions of dirt patches (X,Y)
+- Last line contains movement instructions (NWSE)
   </br>
 
 Output:

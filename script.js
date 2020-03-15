@@ -20,13 +20,16 @@ for (let i = 2; i < inputsSplit.length - 1; i++) {
 }
 
 // run Hoover movement function, declare answers
-[finalCoordinates, numberOfDirtCleaned] = Hoover(
-  dimensions,
-  originalPosition,
-  movements,
-  dirtLocations
-);
+answers = Hoover(dimensions, originalPosition, movements, dirtLocations);
+if (answers) {
+  let finalCoordinates = answers[0];
+  let numberOfDirtCleaned = answers[1];
 
-// console log answers
-console.log(finalCoordinates);
-console.log(numberOfDirtCleaned);
+  // console log answers
+  console.log(finalCoordinates);
+  console.log(numberOfDirtCleaned);
+} else {
+  console.log(
+    "Invalid inputs, check to make sure initial position of Hoover is inside the defined room dimensions"
+  );
+}
