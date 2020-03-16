@@ -1,8 +1,12 @@
 // --------------------------------------------------------------------------------------------------------------
 // Main function to run the Hoover
 function Hoover(dimensions, originalPosition, movements, dirtLocations) {
-  // make copy of array as to not alter input directly (later on)
-  let dirtLocationsArr = [...dirtLocations];
+  // Creating object with keys of dirt locations for efficient look up as Hoover moves
+  // This way the dirt array is only looped through once
+  let dirtLocationsObj = {};
+  for (let i = 0; i < dirtLocations.length; i++) {
+    dirtLocationsObj[dirtLocations[i]] = true;
+  }
 
   // check if inputs are valid
   // if the initial hoover coordinates are outside the dimensions of room, stop
@@ -20,12 +24,12 @@ function Hoover(dimensions, originalPosition, movements, dirtLocations) {
   // Dirt counter set up
   let dirtCounter = 0;
 
-  // If there is dirt on starting position, count it
-  let dirtFoundIndex = findDirtIndex(originalPosition, dirtLocationsArr);
-  // if dirt patch is found, increment counter and delete dirt patch from array to prevent double counting
-  if (dirtFoundIndex !== -1) {
+  // If there is dirt on starting position, count it, delete dirt patch from object
+  if (
+    dirtLocationsObj[originalPosition[0] + "," + originalPosition[1]] == true
+  ) {
     dirtCounter++;
-    dirtLocationsArr.splice(dirtFoundIndex, 1);
+    delete dirtLocationsObj[currentPositionX + "," + currentPositionY];
   }
 
   // Executing Movements (N,S,E,W)
@@ -57,15 +61,11 @@ function Hoover(dimensions, originalPosition, movements, dirtLocations) {
         }
         break;
     }
-    // assign dirt index (it is -1 if not found)
-    dirtFoundIndex = findDirtIndex(
-      [currentPositionX.toString(), currentPositionY.toString()],
-      dirtLocationsArr
-    );
-    // if dirt patch is found, increment counter and delete dirt patch from array to prevent double counting dirt patches
-    if (dirtFoundIndex !== -1) {
+
+    // If there is dirt on the current position, count it, delete dirt patch from object
+    if (dirtLocationsObj[currentPositionX + "," + currentPositionY] == true) {
       dirtCounter++;
-      dirtLocationsArr.splice(dirtFoundIndex, 1);
+      delete dirtLocationsObj[currentPositionX + "," + currentPositionY];
     }
   }
 
@@ -75,19 +75,5 @@ function Hoover(dimensions, originalPosition, movements, dirtLocations) {
     numberOfDirtCleaned: dirtCounter.toString()
   };
 }
-
-// --------------------------------------------------------------------------------------------------------------
-// Function that checks an array for a sub array in the context of this problem (assuming sub array has length of 2)
-function findDirtIndex(subArr, arr) {
-  let check = -1;
-  for (let i = 0; i < arr.length; i++) {
-    if (subArr[0] == arr[i][0] && subArr[1] == arr[i][1]) {
-      check = i;
-    }
-  }
-  return check;
-}
-
 // --------------------------------------------------------------------------------------------------------------
 exports.Hoover = Hoover;
-exports.findDirtIndex = findDirtIndex;

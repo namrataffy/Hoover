@@ -1,4 +1,4 @@
-const { Hoover, findSubArr } = require("../hooverFunctions");
+const { Hoover } = require("../hooverFunction");
 
 // tests the 0,0 position, checks for initial dirt patch on 0,0
 test1();

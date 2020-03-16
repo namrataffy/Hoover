@@ -1,12 +1,12 @@
 const fs = require("fs");
-const { Hoover, findSubArr } = require("./hooverFunctions.js");
+const { Hoover } = require("./hooverFunction.js");
 
 // Importing text file as a string
 const inputsImported = fs.readFileSync("input.txt", "utf8", (err, data) => {
   if (err) throw err;
 });
 
-// Splitting string into easier ot use format
+// Splitting string into easier to use format
 const inputsSplit = inputsImported.split("\n");
 
 // Parsing inputs
