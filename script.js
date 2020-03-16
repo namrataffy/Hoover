@@ -26,6 +26,7 @@ let { finalCoordinates, numberOfDirtCleaned } = Hoover(
   movements,
   dirtLocations
 );
+
 // console log answers
 console.log(finalCoordinates);
 console.log(numberOfDirtCleaned);

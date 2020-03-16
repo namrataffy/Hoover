@@ -1,7 +1,7 @@
 // --------------------------------------------------------------------------------------------------------------
 // Main function to run the Hoover
 function Hoover(dimensions, originalPosition, movements, dirtLocations) {
-  // make copy of array to not alter input directly
+  // make copy of array as to not alter input directly (later on)
   let dirtLocationsArr = [...dirtLocations];
 
   // check if inputs are valid
@@ -69,10 +69,7 @@ function Hoover(dimensions, originalPosition, movements, dirtLocations) {
     }
   }
 
-  // format answers
-  let finalCoordinates = currentPositionX + " " + currentPositionY;
-  let numberOfDirtCleaned = dirtCounter.toString();
-
+  // return answers in proper format as requested
   return {
     finalCoordinates: currentPositionX + " " + currentPositionY,
     numberOfDirtCleaned: dirtCounter.toString()
