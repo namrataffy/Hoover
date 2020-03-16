@@ -10,19 +10,18 @@ test2();
 test3();
 
 // test for starting position outside of rectangle
-test4();
+// test4();
 
 // test for standard set of inputs
 test5();
 
-// test for moving only into a wall
+// test for moving only into a wall N/E
 test6();
 
+// test for moving only into a wall S/W
+test7();
 // --------------------------------------------------------------------------------------------------------------
 function test1() {
-  let finalCoordinates;
-  let numberOfDirtCleaned;
-
   let dimensions = ["10", "10"];
   let originalPosition = ["0", "0"];
   let movements = ["N", "N", "E", "N", "S", "W"];
@@ -33,12 +32,14 @@ function test1() {
     ["1", "2"],
     ["1", "3"]
   ];
+
   // run Hoover movement function, declare answers
-  answers = Hoover(dimensions, originalPosition, movements, dirtLocations);
-  if (answers) {
-    finalCoordinates = answers[0];
-    numberOfDirtCleaned = answers[1];
-  }
+  let { finalCoordinates, numberOfDirtCleaned } = Hoover(
+    dimensions,
+    originalPosition,
+    movements,
+    dirtLocations
+  );
 
   // check if pass
   if (finalCoordinates == "0 2" && numberOfDirtCleaned == "5") {
@@ -50,21 +51,18 @@ function test1() {
 
 // --------------------------------------------------------------------------------------------------------------
 function test2() {
-  let finalCoordinates;
-  let numberOfDirtCleaned;
-
   let dimensions = ["10", "10"];
   let originalPosition = ["0", "0"];
   let movements = ["N", "N", "E", "N", "S", "W"];
   let dirtLocations = [];
 
   // run Hoover movement function, declare answers
-  answers = Hoover(dimensions, originalPosition, movements, dirtLocations);
-  if (answers) {
-    finalCoordinates = answers[0];
-    numberOfDirtCleaned = answers[1];
-  }
-
+  let { finalCoordinates, numberOfDirtCleaned } = Hoover(
+    dimensions,
+    originalPosition,
+    movements,
+    dirtLocations
+  );
   // check if pass
   if (finalCoordinates == "0 2" && numberOfDirtCleaned == "0") {
     console.log("passed test 2");
@@ -75,20 +73,18 @@ function test2() {
 
 // --------------------------------------------------------------------------------------------------------------
 function test3() {
-  let finalCoordinates;
-  let numberOfDirtCleaned;
-
   let dimensions = ["100", "10"];
   let originalPosition = ["100", "0"];
   let movements = ["N", "N", "E", "N", "S", "W"];
   let dirtLocations = [["100", "0"]];
 
   // run Hoover movement function, declare answers
-  answers = Hoover(dimensions, originalPosition, movements, dirtLocations);
-  if (answers) {
-    finalCoordinates = answers[0];
-    numberOfDirtCleaned = answers[1];
-  }
+  let { finalCoordinates, numberOfDirtCleaned } = Hoover(
+    dimensions,
+    originalPosition,
+    movements,
+    dirtLocations
+  );
 
   // check if pass
   if (finalCoordinates == "99 2" && numberOfDirtCleaned == "1") {
@@ -99,35 +95,29 @@ function test3() {
 }
 
 // --------------------------------------------------------------------------------------------------------------
-function test4() {
-  let finalCoordinates;
-  let numberOfDirtCleaned;
+// function test4() {
+//   let dimensions = ["2", "2"];
+//   let originalPosition = ["100", "0"];
+//   let movements = ["N", "N", "E", "N", "S", "W"];
+//   let dirtLocations = [["100", "0"]];
 
-  let dimensions = ["2", "2"];
-  let originalPosition = ["100", "0"];
-  let movements = ["N", "N", "E", "N", "S", "W"];
-  let dirtLocations = [["100", "0"]];
-
-  // run Hoover movement function, declare answers
-  answers = Hoover(dimensions, originalPosition, movements, dirtLocations);
-  if (answers) {
-    finalCoordinates = answers[0];
-    numberOfDirtCleaned = answers[1];
-  }
-
-  // check if pass
-  if (answers == null) {
-    console.log("passed test 4");
-  } else {
-    console.log("failed test 4");
-  }
-}
+//   // run Hoover movement function, declare answers
+//   let { finalCoordinates, numberOfDirtCleaned } = Hoover(
+//     dimensions,
+//     originalPosition,
+//     movements,
+//     dirtLocations
+//   );
+//   // check if pass
+//   if (answers == null) {
+//     console.log("passed test 4");
+//   } else {
+//     console.log("failed test 4");
+//   }
+// }
 
 // --------------------------------------------------------------------------------------------------------------
 function test5() {
-  let finalCoordinates;
-  let numberOfDirtCleaned;
-
   let dimensions = ["10", "10"];
   let originalPosition = ["5", "5"];
   let movements = ["N", "S", "E", "W", "S", "W"];
@@ -139,11 +129,12 @@ function test5() {
   ];
 
   // run Hoover movement function, declare answers
-  answers = Hoover(dimensions, originalPosition, movements, dirtLocations);
-  if (answers) {
-    finalCoordinates = answers[0];
-    numberOfDirtCleaned = answers[1];
-  }
+  let { finalCoordinates, numberOfDirtCleaned } = Hoover(
+    dimensions,
+    originalPosition,
+    movements,
+    dirtLocations
+  );
 
   // check if pass
   if (finalCoordinates == "4 4" && numberOfDirtCleaned == "2") {
@@ -155,9 +146,6 @@ function test5() {
 
 // --------------------------------------------------------------------------------------------------------------
 function test6() {
-  let finalCoordinates;
-  let numberOfDirtCleaned;
-
   let dimensions = ["5", "5"];
   let originalPosition = ["5", "5"];
   let movements = ["N", "E", "E", "N"];
@@ -169,16 +157,44 @@ function test6() {
   ];
 
   // run Hoover movement function, declare answers
-  answers = Hoover(dimensions, originalPosition, movements, dirtLocations);
-  if (answers) {
-    finalCoordinates = answers[0];
-    numberOfDirtCleaned = answers[1];
-  }
-
+  let { finalCoordinates, numberOfDirtCleaned } = Hoover(
+    dimensions,
+    originalPosition,
+    movements,
+    dirtLocations
+  );
   // check if pass
   if (finalCoordinates == "5 5" && numberOfDirtCleaned == "1") {
     console.log("passed test 6");
   } else {
     console.log("failed test 6");
+  }
+}
+
+// --------------------------------------------------------------------------------------------------------------
+function test7() {
+  let dimensions = ["0", "0"];
+  let originalPosition = ["0", "0"];
+  let movements = ["S", "W", "W", "S"];
+  let dirtLocations = [
+    ["5", "5"],
+    ["4", "5"],
+    ["4", "4"],
+    ["1", "3"]
+  ];
+
+  // run Hoover movement function, declare answers
+  let { finalCoordinates, numberOfDirtCleaned } = Hoover(
+    dimensions,
+    originalPosition,
+    movements,
+    dirtLocations
+  );
+
+  // check if pass
+  if (finalCoordinates == "0 0" && numberOfDirtCleaned == "0") {
+    console.log("passed test 7");
+  } else {
+    console.log("failed test 7");
   }
 }
