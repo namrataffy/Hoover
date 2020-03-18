@@ -34,9 +34,6 @@ function Hoover(dimensions, originalPosition, movements, dirtLocations) {
 
   // Executing Movements (N,S,E,W)
   for (let i = 0; i < movements.length; i++) {
-    // create dirt found index
-    let dirtFoundIndex;
-
     // switch cases for various movements
     // if the hoover is already at the wall, don't move. If not, move by incrementing current position
     switch (movements[i]) {
